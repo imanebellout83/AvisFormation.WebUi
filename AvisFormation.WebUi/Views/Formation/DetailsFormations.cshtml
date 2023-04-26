@@ -1,0 +1,76 @@
+﻿@model AvisFormation.WebUi.Models.FormationAvecAvisViewModel
+@{
+    ViewBag.Title = Model.FormationNom;
+}
+
+<div class="p-2 mb-4 bg-dark my-4 rounded-2">
+    <div class="container-fluid py-3 " style="color:#ffa500;" id="Title">
+        <h1 class="display-5 fw-bold ">Courses reviews</h1>
+        <p class="fs-4">Details de la formation:@Model.FormationNom</p>
+
+
+    </div>
+</div>
+@if (TempData["message"] != null)
+{<div class="alert alert-danger" role="alert">
+        @TempData["message"]
+    </div>
+}
+
+
+
+
+@*modification*@
+<div class="row row-cols-1 row-cols-md-3 g-4 py-1">
+    <div class="col-md-12">
+        <div class="card h-100 bg-white">
+            <div class="card-body my-1">
+                <h5 class="card-title " style="color:#ffa500;">@Model.FormationNom</h5>
+
+                <ul>
+                    <li>Nom de la formation : @Model.FormationNom</li>
+                    <li>Déscription : @Model.FormationDescription</li>
+                    <li>Url : @Model.FormationUrl</li>
+                    @if (Model.Note != 0)
+                    {
+                        <li>Note : @Model.Note</li>
+                        <li>Nombre d' avis : @Model.NombreAvis</li>
+                    }
+                    else
+                    {
+                        <li>Note : 5</li>
+                        <li>Nombre d' avis : aucun avis !</li>
+                    }
+                </ul>
+                @Html.ActionLink("Ajouter un avis", "AjouterUnAvis", "Avis", new { nomSeo = Model.FormationNomSeo }, new { @class = "btn btn-outline-warning" })
+                @Html.ActionLink("Retour", "ToutesLesFormations", "Formation", null, new { @class = "btn btn-outline-warning" })
+            </div>
+        </div>
+    </div>
+
+
+    @foreach (var avis in Model.FormationAvis)
+    {
+        <div class="col-md-12">
+            <div class="card h-100 bg-white">
+                <div class="card-body my-1">
+                    <div>
+                        <div>@avis.DateAvis</div>
+                        <div>@avis.Note</div>
+                        <div>@avis.Nom</div>
+                        <div>@avis.Description</div>
+                    </div>
+
+                   
+
+                </div>
+            </div>
+        </div>
+    }
+
+</div>       
+    
+
+
+
+

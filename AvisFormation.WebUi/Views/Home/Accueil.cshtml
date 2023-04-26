@@ -1,0 +1,165 @@
+﻿@model List<AvisFormation.WebUi.Models.AccueilViewModel>
+@{
+    ViewBag.Title = "Accueil";
+}
+
+<div class="p-5 mb-4 bg-dark my-4 rounded-2" >
+    <div class="container-fluid py-3 "style="color:#ffa500;" id="Title">
+        <h1 class="display-5 fw-bold " >Courses reviews</h1>
+        <p class="fs-4" >Choisissez la meilleure formation !</p>
+
+
+    </div>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 g-4 py-3" >
+    @foreach (var f in Model)
+    {
+
+        <div class="col-md-3">
+            <div class="card h-100 bg-white">
+
+                <div class="card-body my-1">
+                    <h5 class="card-title " style="color:#ffa500;">@f.FormationNom</h5>
+                    <p class="card-text">
+                        @if (f.Note % 1 == 0)
+                        {
+                            for (var i = 0; i < @f.Note; i++)
+                            {<i class="fa fa-star" style="color:#ffa500;"></i>}
+                        }
+                        else
+                        {
+                            for (var i = 1; i < @f.Note; i++)
+                            {<i class="fa fa-star" style="color:#ffa500;"></i>}
+                            <i class="fa fa-star-half-alt" style="color:#ffa500;"></i>
+
+                        }
+                       
+                        @f.Note/5
+                    </p>
+                    <p class="card-text">@f.FormationDescription</p>
+
+
+
+
+                </div>
+            </div>
+        </div>
+
+
+    }
+
+
+</div>
+<div class="container bg-white text-center  rounded-2" style="padding:30px;">
+    <h2>Pourquoi utiliser notre site?</h2>
+    <h3>Bénéfices formateur </h3>
+    <div class="row logo">
+        <div class="col-md-6">
+            <i class="fa fa-gift " style="color:#ffa500; font-size:50px;"></i>
+            <h4>Conversion</h4>
+            <p>Améliorez votre taux de conversion</p>
+        </div>
+        <div class="col-md-6">
+            <i class="fa fa-eye " style="color:#ffa500; font-size:50px;"></i>
+            <h4>Visibilité</h4>
+            <p>Améliorez votre visibilité</p>
+        </div>
+        <div class="col-md-6">
+            <i class="fa fa-handshake " style="color:#ffa500; font-size:50px;"></i>
+            <h4>Fédélisation</h4>
+            <p>Obtenez des clients plus fidèles et engagés</p>
+        </div>
+        <div class="col-md-6">
+            <i class="fa fa-heart " style="color:#ffa500; font-size:50px;" ></i>
+            <h4>Confiance</h4>
+            <p>Vous bénéficiez des retours d'anciens élèves pour améliorer vos produits</p>
+        </div>
+    </div>
+</div>
+<div class="container text-center "style="padding:30px;">
+    <div class="row">
+        <div class="col-md-8">
+            <h3>Professionnels de la formation, affichez notre badge sur votre site pour augmenter vos conversions !</h3>
+
+        </div>
+        <div class="col-md-4 rounded-1 " style="background-color:white; border:1px solid #ffa500; padding:0px;">
+            <div  style=" padding:10px;">
+                Avis des éléves 4.8/5
+                <i class="fa fa-star"  style="color:#ffa500;" ></i>
+                <i class="fa fa-star"  style="color:#ffa500;"></i>
+                <i class="fa fa-star"  style="color:#ffa500;"></i>
+                <i class="fa fa-star"  style="color:#ffa500;"></i>
+                <i class="fa fa-star-half"  style="color:#ffa500;"></i>
+            </div>
+            <div  style="background-color:#ffa500; padding:10px;">
+                Avis récoltés par coursesreviews.com
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+
+<div class="container bg-white text-center  rounded-2" style="padding:30px;">
+    <div class="row">
+        <div class="col-md-3">
+            <h1>85% </h1>
+            <p>des internautes consultent les avis clients avant d'acheter en ligne</p>
+        </div>
+        <div class="col-md-3">
+            <h1>91% </h1>
+            <p>de ceux qui lisent les avis les considèrent comme le vecteur numéro 1 dans leur décision d'achat</p>
+        </div>
+        <div class="col-md-3">
+            <h1>+25%</h1>
+            <p> du taux de conversion pour les sites avec étoiles Google</p>
+        </div>
+        <div class="col-md-3">
+            <h1>80 % </h1>
+            <p>des avis ont une note et un commentaire positifs</p>
+        </div>
+    </div>
+</div>
+
+
+    @*<div class="row row-cols-1 row-cols-md-3 g-4">
+            @foreach (var f in Model)
+            {
+
+                <div class="col">
+                    <div class="card h-100 bg-secondary">
+
+                        <div class="card-body">
+                            <h5 class="card-title">@f.FormationNom</h5>
+                            <p class="card-text">@f.FormationDescription</p>
+                            <p class="card-text">Note:@for (var i = 0; i < @f.Note; i++)
+                            {<span>*</span>} </p>
+                            <p class="card-text"><i class="fa-solid fa-star-sharp"></i>Nombre d'avis: @f.NombreAvis</p>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+            }
+
+
+        </div>*@
+    @*<div class="row align-items-md-stretch my-3">
+            <div class="col-md-6">
+                <div class="h-100 p-5 text-bg-primary rounded-3">
+                    <h2>Decouvrez notre catalogue</h2>
+                    <p>Swap the background-color utility and add a `.text-*` color utility to mix up the jumbotron look. Then, mix and match with additional component themes and more.</p>
+                    <button class="btn btn-outline-light" type="button">Afficher</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="h-100 p-5 bg-primary border rounded-3">
+                    <h2>Evaluez nos formateurs</h2>
+                    <p>Or, keep it light and add a border for some added definition to the boundaries of your content. Be sure to look under the hood at the source HTML here as we've adjusted the alignment and sizing of both column's content for equal-height.</p>
+                    <button class="btn btn-outline-secondary" type="button">Commencer</button>
+                </div>
+            </div>
+        </div>*@

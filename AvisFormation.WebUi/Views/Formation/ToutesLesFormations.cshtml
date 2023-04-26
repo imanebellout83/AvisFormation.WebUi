@@ -1,0 +1,107 @@
+﻿@model List<AvisFormation.WebUi.Models.AccueilViewModel>
+@{
+    ViewBag.Title = "ToutesLesFormations";
+
+}
+<div class="p-2 mb-4 bg-dark my-4 rounded-2">
+    <div class="container-fluid py-1 " style="color:#ffa500;" id="Title">
+        <h1 class="display-5 fw-bold ">Courses reviews</h1>
+        <p class="fs-4"> Notre catalogue de formation </p>
+
+
+    </div>
+</div>
+
+
+@*<div>
+        <table class="table table-striped table-hover">
+            <caption>touts les formations</caption>
+            <tbody>
+                @foreach (var formation in @Model)
+                {
+                    <tr>
+                        <td>@formation.Nom </td>
+                        <td>
+                            @Html.ActionLink("Details", "DetailsFormations", "Formation", new { nomSeo = formation.NomSeo }, new { @class = "btn btn-secondary" })-->
+                             <a href="/Formation/DetailsFormations?nomSeo=@formation.NomSeo" class="btn btn-success">Details</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>*@
+
+
+@*modification*@
+
+<div class="row row-cols-1 row-cols-md-3 g-4 py-3">
+
+    @foreach (var formation in @Model)
+    {
+        <div class="col-md-4">
+            <div class="card h-100 bg-white">
+
+                <div class="card-body my-1">
+                    <h5 class="card-title " style="color:#ffa500; height:20%;"> @formation.FormationNom </h5>
+
+                    <p class="card-text text-truncate " style="height:20%;" >
+                        bonjour
+                        @formation.FormationDescription
+                        </p>
+                    <p class="card-text" style="height:10%;">
+                        @if (formation.Note % 1 == 0)
+                        {
+                            for (var i = 0; i < @formation.Note; i++)
+                            {<i class="fa fa-star" style="color:#ffa500;"></i>}
+                        }
+                        else
+                        {
+                            for (var i = 1; i < @formation.Note; i++)
+                            {<i class="fa fa-star" style="color:#ffa500;"></i>}
+                            <i class="fa fa-star-half-alt" style="color:#ffa500;"></i>
+
+                        }
+                        @formation.Note /5 (@formation.NombreAvis)
+
+                    </p>
+                  
+
+                    @Html.ActionLink("Details", "DetailsFormations", "Formation", new { nomSeo = formation.FormationNomSeo }, new { @class = "btn btn-warning" })
+                    @*<a href="/Formation/DetailsFormations?nomSeo=@formation.NomSeo" class="btn btn-success">Details</a>*@
+
+
+                </div>
+            </div>
+        </div>
+    }
+
+
+</div>
+
+
+
+@*<div class="row row-cols-1 row-cols-md-3 g-4 py-3">
+    @foreach (var f in @Model)
+    {
+
+        <div class="col-md-3">
+            <div class="card h-100 bg-white">
+
+                <div class="card-body my-1">
+                    <h5 class="card-title " style="color:#ffa500;">@f.Nom</h5>
+
+                    <p class="card-text">@f.Description</p>
+
+
+
+
+                </div>
+            </div>
+        </div>
+
+
+    }*@
+
+
+

@@ -1,0 +1,60 @@
+﻿@model AvisFormation.WebUi.Models.MyViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div class="jumbotron">
+    <h1>@Model.Message</h1>
+    <a href="~/Home/Index" class="btn btn-primary">lien basique</a>
+    @Html.ActionLink("lien helper", "Index", "Home", null, new { @class = "btn btn-primary" })
+    <div>
+        <h2>checkbox</h2>
+        @Html.CheckBox("my checkbox", Model.mycheckbox1)
+        @Html.CheckBoxFor(a => a.mycheckbox1)
+        <input type="checkbox" value="@Model.mycheckbox1" name="myCheckBox" />
+    </div>
+    <div>
+        <h2>label</h2>
+        @Html.Label("labe1", Model.label1)
+        @Html.LabelFor(f => f.label1)
+        <label for="label1">@Model.label1</label>
+    </div>
+    <div>
+        <h2>displayname</h2>
+        @Html.DisplayNameFor(d => d.mystring)
+        @Html.DisplayFor(d => d.mystring)
+    </div>
+    <div>
+        <h2>hidden</h2>
+        <input type="hidden" value="@Model.mystring" />
+        @Html.Hidden("mystring")
+        @Html.HiddenFor(h => h.mystring)
+    </div>
+    <!--dropdown list-->
+    <div>
+        <select class="form-control" id="FormationGender" name="FormationGender">
+            <option>Select langue</option>
+            @foreach(var lan in Enum.GetValues(typeof(AvisFormation.WebUi.Models.Gender)))
+            {
+                <option>@lan</option>
+            }   
+        </select>
+    </div>
+    <div>
+        <h2>dropdown list</h2>
+        @Html.DropDownListFor(m => m.FormationGender,
+                    new SelectList(Enum.GetValues(typeof(AvisFormation.WebUi.Models.Gender))),
+                    "Select Gender", new {@class="form-control"})
+    </div>
+
+    <!--fin dropdown list-->
+
+    @foreach (var item in Model.Ville)
+    {
+        <h1>@item</h1>
+    }
+    <p>....</p>
+    <p><a class="btn btn-primary" btn-lg>En savoir plus</a></p>
+</div>
